@@ -163,21 +163,21 @@ public class HashTable {
     		}
     	} else {
     		KVPair temp = hTable[hash];
-    		int counter=1;
+    		boolean found=false;
     		while(temp.getNext() != null) {
         		KVPair pred = temp;
     			temp = temp.getNext();
     			if(temp.getKey() == key) {
     				if(temp.getNext() != null){
     	        		pred.setNext(temp.getNext());
-    	        		counter--;
+    	        		found=true;
     	    		} else {
     	    			pred.setNext(null);
-    	    			counter--;
+    	    			found=true;
     	    		}
     			}
     		}
-    		if(counter==1){
+    		if(found==false){
     		throw new HashTableException("Not Found");
     		}
     	} 
